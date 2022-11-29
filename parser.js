@@ -16,6 +16,8 @@ fs.createReadStream("./csv/annual-enterprise-survey-2021-financial-year-provisio
 .on("data", (data) => results.push(data))
 .on("end", () => {
 
+    connection.query("TRUNCATE anual_enterprise;");
+
     let sql = `INSERT INTO anual_enterprise(
       Year,
       Industry_aggregation_NZSIOC,
